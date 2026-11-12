@@ -1,0 +1,32 @@
+# Backend NoteBoard
+# Nama image ditulis lengkap supaya Podman tidak menanyakan registry
+FROM docker.io/library/node:22-alpine
+
+LABEL org.opencontainers.image.title="noteboard-backend" \
+      org.opencontainers.image.description="REST API NoteBoard (Express) - UTS Pengembangan dan Operasi" \
+      org.opencontainers.image.version="1.0.0"
+
+# Konfigurasi default, bukan rahasia. Bisa ditimpa saat run: -e NAMA=nilai
+ENV NODE_ENV=production \
+    PORT=3000 \
+    APP_ENV=production \
+    DATA_DIR=/data
+
+WORKDIR /app
+
+# package.json disalin lebih dulu: selama dependency tidak berubah,
+# layer npm install dipakai ulang dari cache dan build jadi cepat
+COPY package*.json ./
+RUN npm install --omit=dev --no-audit --no-fund && npm cache clean --force
+
+COPY server.js store.js ./
+
+# folder data milik user node, ini yang nanti dipasang volume
+RUN mkdir -p /data && chown node:node /data
+
+USER node
+
+EXPOSE 3000
+VOLUME ["/data"]
+
+CMD ["node", "server.js"]

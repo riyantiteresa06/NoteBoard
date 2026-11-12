@@ -1,0 +1,18 @@
+# tidak ikut masuk build context / image
+node_modules
+npm-debug.log
+*.log
+.git
+.gitignore
+
+# rahasia & konfigurasi lokal
+.env
+.env.*
+*.pem
+*.key
+
+# data hidup di volume, bukan di image
+data/
+
+.vscode
+README.md

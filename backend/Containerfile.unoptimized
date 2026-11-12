@@ -1,0 +1,9 @@
+# HANYA PEMBANDING ukuran image, bukan yang dikumpulkan.
+# Build: podman build -f Containerfile.unoptimized -t noteboard-backend:unoptimized .
+FROM docker.io/library/node:22
+WORKDIR /app
+COPY . .
+RUN npm install
+ENV PORT=3000
+EXPOSE 3000
+CMD ["node", "server.js"]

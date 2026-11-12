@@ -1,0 +1,17 @@
+{
+  "name": "noteboard-backend",
+  "version": "1.0.0",
+  "description": "Backend (REST API) NoteBoard - UTS Pengembangan dan Operasi",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "private": true
+}
