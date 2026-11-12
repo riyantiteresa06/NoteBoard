@@ -35,3 +35,13 @@ Buka http://localhost:8080 di browser. Data tersimpan di `backend/data/notes.jso
 | frontend | `APP_ENV`     | `production`                    | label lingkungan                        |
 
 Tidak ada password atau token di kode maupun image.
+## 👥 Anggota Kelompok
+
+Proyek NoteBoard dikembangkan secara berkelompok oleh empat anggota dengan pembagian tanggung jawab sebagai berikut:
+
+| No. | Nama Anggota | NIM | Tanggung Jawab |
+|---|---|---|---|
+| 1 | Siska Clarissa | 241112966 | Pengembangan frontend menggunakan HTML, CSS, dan JavaScript. |
+| 2 | Riyanti Teresa | 241112192 | Pengembangan backend, konfigurasi server, REST API, dan pengelolaan data catatan. |
+| 3 | Vincent Arifwan Widjaya | 241111280 | Integrasi frontend dan backend serta pengujian fitur aplikasi. |
+| 4 | Wesley | 241111300 | Deployment menggunakan Podman, konfigurasi container, network, volume, dan optimasi image. |
