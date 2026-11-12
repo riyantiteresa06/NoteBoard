@@ -93,26 +93,26 @@ Data catatan tetap ada setelah container dihapus dan dibuat ulang, karena disimp
 
 ## Push dan pull ke registry (Quay.io)
 
-Ganti `USERNAME` dengan username Quay.io.
+Username Quay.io kelompok: `241112192`.
 
     podman login quay.io
-    podman tag noteboard-backend:1.0.0  quay.io/USERNAME/noteboard-backend:1.0.0
-    podman tag noteboard-frontend:1.0.0 quay.io/USERNAME/noteboard-frontend:1.0.0
-    podman push quay.io/USERNAME/noteboard-backend:1.0.0
-    podman push quay.io/USERNAME/noteboard-frontend:1.0.0
+    podman tag noteboard-backend:1.0.0  quay.io/241112192/noteboard-backend:1.0.0
+    podman tag noteboard-frontend:1.0.0 quay.io/241112192/noteboard-frontend:1.0.0
+    podman push quay.io/241112192/noteboard-backend:1.0.0
+    podman push quay.io/241112192/noteboard-frontend:1.0.0
 
 Atur kedua repository menjadi public di quay.io. Untuk menjalankan dari image hasil pull:
 
-    podman pull quay.io/USERNAME/noteboard-backend:1.0.0
-    podman pull quay.io/USERNAME/noteboard-frontend:1.0.0
+    podman pull quay.io/241112192/noteboard-backend:1.0.0
+    podman pull quay.io/241112192/noteboard-frontend:1.0.0
 
     podman run -d --name noteboard-backend --network noteboard-net \
       -p 3000:3000 -v noteboard-data:/data -e APP_ENV=lab \
-      quay.io/USERNAME/noteboard-backend:1.0.0
+      quay.io/241112192/noteboard-backend:1.0.0
 
     podman run -d --name noteboard-frontend --network noteboard-net \
       -p 8080:8080 -e APP_ENV=lab -e BACKEND_URL=http://noteboard-backend:3000 \
-      quay.io/USERNAME/noteboard-frontend:1.0.0
+      quay.io/241112192/noteboard-frontend:1.0.0
 
 ## Menjalankan di VS Code (tanpa container, untuk coba dulu)
 
