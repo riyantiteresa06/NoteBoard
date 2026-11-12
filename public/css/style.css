@@ -1,0 +1,139 @@
+/* NoteBoard - tampilan papan tulis gelap dengan kertas catatan berwarna per kategori */
+:root {
+  --papan: #22353b;
+  --papan-gelap: #1a2a2f;
+  --panel: #f2f4f3;
+  --teks: #1d2a2e;
+  --redup: #5b6b70;
+  --garis: #cfd7d6;
+  --aksen: #1d5c6b;
+  --kuliah: #cfe2f3;
+  --tugas: #f8d3c8;
+  --ide: #f6e8a0;
+  --pribadi: #d3e8cf;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--papan);
+  color: #e8eeed;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+.atas {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 22px 16px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.atas h1 { margin: 0; font-size: 1.7rem; letter-spacing: -0.01em; }
+nav a { color: #b9cdd0; text-decoration: none; margin-left: 18px; padding-bottom: 2px; }
+nav a:hover { color: #fff; }
+nav a[aria-current="page"] { color: #fff; border-bottom: 2px solid #f6e8a0; }
+
+main { max-width: 980px; margin: 0 auto; padding: 8px 16px 48px; }
+
+.panel {
+  background: var(--panel);
+  color: var(--teks);
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin-bottom: 18px;
+}
+.panel h2 { margin: 0 0 8px; font-size: 1.1rem; }
+
+.baris { display: grid; grid-template-columns: 2fr 1.2fr 1fr; gap: 12px; }
+label { display: block; font-size: 0.85rem; color: var(--redup); margin: 10px 0 4px; }
+input, select, textarea {
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid var(--garis);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--teks);
+  font: inherit;
+}
+textarea { resize: vertical; }
+:focus-visible { outline: 3px solid #e0a526; outline-offset: 1px; }
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: 0;
+  border-radius: 6px;
+  padding: 9px 16px;
+  background: var(--aksen);
+  color: #fff;
+  font-weight: 600;
+}
+button:hover { background: #164a57; }
+button.sekunder { background: transparent; color: var(--teks); border: 1px solid var(--garis); }
+button.sekunder:hover { background: #e3e8e7; }
+.aksi { margin-top: 12px; display: flex; gap: 10px; }
+
+.pesan { min-height: 1.4em; margin: 10px 0 0; font-size: 0.9rem; }
+.pesan.salah { color: #a3261b; font-weight: 600; }
+.pesan.benar { color: #1e6b3a; }
+
+.alat { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 8px; }
+.alat input[type="search"] { flex: 1 1 240px; width: auto; background: var(--papan-gelap); color: #fff; border-color: #3b5157; }
+.filter { display: flex; gap: 6px; flex-wrap: wrap; }
+.filter button {
+  background: transparent;
+  border: 1px solid #4a6269;
+  color: #cddadb;
+  padding: 6px 12px;
+  font-weight: 500;
+}
+.filter button:hover { background: #2d444b; }
+.filter button[aria-pressed="true"] { background: #e8eeed; color: var(--teks); border-color: #e8eeed; }
+
+.ringkasan { color: #a9bcbf; font-size: 0.9rem; margin: 8px 0 14px; }
+
+.papan { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.catatan {
+  color: var(--teks);
+  border-radius: 4px;
+  padding: 14px 16px 12px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.25);
+}
+.catatan.Kuliah { background: var(--kuliah); }
+.catatan.Tugas { background: var(--tugas); }
+.catatan.Ide { background: var(--ide); }
+.catatan.Pribadi { background: var(--pribadi); }
+.catatan.pin { border-top: 5px solid #b3402e; }
+
+.catatan .kat { font-size: 0.78rem; color: #3b4a4f; font-weight: 600; }
+.catatan h3 { margin: 2px 0 6px; font-size: 1.05rem; word-break: break-word; }
+.catatan p { margin: 0 0 10px; white-space: pre-wrap; word-break: break-word; flex: 1; }
+.catatan .info { font-size: 0.8rem; color: #3f4f54; margin-bottom: 8px; }
+.catatan .tombol { display: flex; gap: 6px; flex-wrap: wrap; }
+.catatan .tombol button {
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--teks);
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  padding: 4px 10px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.catatan .tombol button:hover { background: #fff; }
+.catatan .tombol .hapus { color: #a3261b; }
+
+.kosong { grid-column: 1 / -1; padding: 28px 8px; color: #a9bcbf; }
+
+table { width: 100%; border-collapse: collapse; }
+td { padding: 7px 4px; border-bottom: 1px solid var(--garis); vertical-align: top; }
+td:first-child { color: var(--redup); width: 40%; }
+
+@media (max-width: 640px) {
+  .baris { grid-template-columns: 1fr; }
+}
